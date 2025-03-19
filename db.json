@@ -1,0 +1,12 @@
+[
+  {
+    "nombre": "zed",
+    "rol": "asesino",
+    "poder": 70
+  },
+  {
+    "nombre": "aphelios",
+    "rol": "tirador",
+    "poder": 90
+  }
+]
