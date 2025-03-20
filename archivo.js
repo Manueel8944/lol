@@ -11,6 +11,7 @@ class Campeon {
     }
 
     toString() {
+        console.log("--------------------------------------------")
         return "Nombre: "+this.nombre+" - Rol: "+this.rol+" - Poder: "+this.poder
     }
 }
@@ -120,7 +121,7 @@ class Juego {
         for (let i = 0; i < (this.campeones.length-1); i++){
             for (let j = 0; j < (this.campeones.length - i - 1); j++){
                 
-                if (this.campeones[j]["poder"] > this.campeones[j+1]["poder"]){ 
+                if (this.campeones[j]["rol"] > this.campeones[j+1]["rol"]){ 
                      let aux = this.campeones[j];
                      this.campeones[j] = this.campeones[j+1];
                      this.campeones[j+1] = aux;
@@ -129,6 +130,55 @@ class Juego {
         }
 
         console.log("Campeones ordenados por rol exitosamente")
+
+        this.escribirdatos()
+    }
+
+    buscarCampeon () {
+        this.leerdatos()
+
+        let ordenadosNombre = this.campeones
+
+        for (let i = 0; i < (ordenadosNombre.length-1); i++){
+            for (let j = 0; j < (ordenadosNombre.length - i - 1); j++){
+                
+                if (ordenadosNombre[j]["nombre"] > ordenadosNombre[j+1]["nombre"]){ 
+                     let aux = ordenadosNombre[j];
+                     ordenadosNombre[j] = ordenadosNombre[j+1];
+                     ordenadosNombre[j+1] = aux;
+                }
+            }
+        }
+
+        let nombreBuscado = prompt("Nombre del campeón que quieras buscar: ").toLowerCase();
+    
+        let izquierda = 0;
+        let derecha = ordenadosNombre.length - 1;
+        let posicion = -1;
+        let encontrado = false;
+        let medio;
+    
+        while (!encontrado && izquierda <= derecha) {
+            medio = Math.floor((izquierda + derecha) / 2);
+            
+            if (ordenadosNombre[medio].nombre === nombreBuscado) {  
+                encontrado = true;
+                posicion = medio;
+            } else if (ordenadosNombre[medio].nombre > nombreBuscado) {  
+                derecha = medio - 1;
+            } else {  
+                izquierda = medio + 1;
+            }
+        }
+
+        if (posicion !== -1) {
+            let campeon = new Campeon (ordenadosNombre[posicion].nombre, ordenadosNombre[posicion].rol, ordenadosNombre[posicion].poder)
+            console.log(campeon.toString())
+        }
+
+        else {
+            console.log("Error: Campeón no encontrado")
+        }
 
         this.escribirdatos()
     }
@@ -238,7 +288,7 @@ function menu () {
             case 3: {
                 console.clear()
                 console.log("=== Buscar campeon ===") 
-              
+                lol.buscarCampeon()
                 pause = prompt("Pulse Enter para continuar...")
                 break;
             }
