@@ -31,26 +31,6 @@ class Juego {
         fs.writeFileSync("db.json", datosparseados, 'utf8');
     }
 
-    dicotomica (valor, lista) {
-        let izquierda = 0; 
-        let derecha = lista.length - 1; 
-        let posicion = -1; 
-        let encontrado = false;
-        let medio;
-        while (encontrado === false && izquierda <= derecha) { 
-            medio = Math.floor((izquierda + derecha)/2);
-            if (lista[medio] == valor) {
-                encontrado = true;
-                posicion = medio;
-            } else if (lista[medio] > valor) {  
-                derecha = medio - 1;           
-            } else { 
-                izquierda = medio + 1;         
-            }                                  
-        }
-        return posicion;
-    }
-
     agregarCampeon(){
         this.leerdatos()
 
