@@ -1,8 +1,8 @@
 [
   {
-    "nombre": "aphelios",
-    "rol": "tirador",
-    "poder": 90
+    "nombre": "zed",
+    "rol": "asesino",
+    "poder": 70
   },
   {
     "nombre": "aurelion sol",
@@ -15,8 +15,13 @@
     "poder": 100
   },
   {
-    "nombre": "zed",
-    "rol": "asesino",
-    "poder": 70
+    "nombre": "manolo",
+    "rol": "tanque",
+    "poder": 0
+  },
+  {
+    "nombre": "aphelios",
+    "rol": "tirador",
+    "poder": 90
   }
 ]
